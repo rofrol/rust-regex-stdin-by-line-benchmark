@@ -102,7 +102,7 @@ impl<R: BufRead> Parser<R> {
     }
 }
 
-fn main() {
+fn main() -> Result<(), ParseError> {
     let stdin = std::io::stdin();
     let mut parser = Parser::new(BufReader::new(stdin.lock()));
 
@@ -118,8 +118,10 @@ fn main() {
         quotes_3: "Go-http-client/1.1",
     };
 
-    while let Some(entry) = parser.next_entry().unwrap() {
+    while let Some(entry) = parser.next_entry()? {
         assert_eq!(expected, entry);
         println!("{}", parser.line_buf);
     }
+
+    Ok(())
 }
