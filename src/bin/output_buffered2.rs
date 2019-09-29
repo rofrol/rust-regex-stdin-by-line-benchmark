@@ -2,9 +2,9 @@ use regex::Regex;
 use std::io::prelude::*;
 use std::io::{self, BufWriter};
 
-fn main() -> io::Result<()> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let regex = r#"^([^ ]+) ([^ ]+) ([^\[]+) +\[([^\]]*)\] "([A-Z]+) ([^"]*)" ([0-9]+) ([0-9]+) "([^"]*)" "([^"]*)"$"#;
-    let regex = Regex::new(regex).unwrap();
+    let regex = Regex::new(regex)?;
     let mut writer = BufWriter::new(io::stdout());
 
     for line in std::io::stdin().lock().lines() {

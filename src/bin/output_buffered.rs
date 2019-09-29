@@ -1,12 +1,12 @@
 use regex::Regex;
 use std::fs::File;
 use std::io::prelude::*;
-use std::io::{self, BufWriter};
+use std::io::BufWriter;
 use std::os::unix::io::FromRawFd;
 
-fn main() -> io::Result<()> {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let regex = r#"^([^ ]+) ([^ ]+) ([^\[]+) +\[([^\]]*)\] "([A-Z]+) ([^"]*)" ([0-9]+) ([0-9]+) "([^"]*)" "([^"]*)"$"#;
-    let regex = Regex::new(regex).unwrap();
+    let regex = Regex::new(regex)?;
     let stdout = unsafe { File::from_raw_fd(1) };
     let mut writer = BufWriter::new(stdout);
 
