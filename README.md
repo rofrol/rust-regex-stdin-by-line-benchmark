@@ -26,6 +26,11 @@ Benchmark #1: target/release/output_buffered < test.log
   Time (mean ± σ):      39.4 ms ±   0.7 ms    [User: 32.2 ms, System: 4.1 ms]
   Range (min … max):    38.4 ms …  42.4 ms    68 runs
 
+$ hyperfine --warmup 10 'target/release/output_buffered2 < test.log'
+Benchmark #1: target/release/output_buffered2 < test.log
+  Time (mean ± σ):      84.4 ms ±   2.6 ms    [User: 73.5 ms, System: 8.3 ms]
+  Range (min … max):    81.6 ms …  94.9 ms    34 runs
+
 $ hyperfine --warmup 10 'target/release/output_and_input_buffered < test.log'
 Benchmark #1: target/release/output_and_input_buffered < test.log
   Time (mean ± σ):      40.4 ms ±   0.9 ms    [User: 34.9 ms, System: 3.8 ms]
