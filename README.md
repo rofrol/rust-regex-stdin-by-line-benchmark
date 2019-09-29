@@ -9,6 +9,7 @@ $ cargo build --release --bins
 $ hyperfine 'target/release/original < test.log'
 $ hyperfine 'target/release/output_buffered < test.log'
 $ hyperfine 'target/release/output_and_input_buffered < test.log'
+$ hyperfine 'target/release/parser < test.log'
 ```
 
 ## Results
@@ -28,6 +29,11 @@ $ hyperfine --warmup 10 'target/release/output_and_input_buffered < test.log'
 Benchmark #1: target/release/output_and_input_buffered < test.log
   Time (mean ± σ):      40.4 ms ±   0.9 ms    [User: 34.9 ms, System: 3.8 ms]
   Range (min … max):    39.0 ms …  43.5 ms    64 runs
+
+$ hyperfine --warmup 10 'target/release/parser < test.log'
+Benchmark #1: target/release/parser < test.log
+  Time (mean ± σ):     246.1 ms ±   1.6 ms    [User: 68.6 ms, System: 174.6 ms]
+  Range (min … max):   244.2 ms … 250.0 ms    12 runs
 ```
 
 ## Links
