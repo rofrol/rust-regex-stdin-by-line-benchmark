@@ -4,6 +4,7 @@ Based on discussion from https://www.reddit.com/r/rust/comments/d9zfa6/how_come_
 ## Run
 
 ```bash
+$ cargo install hyperfine
 $ ./genearate_log.sh
 $ cargo build --release --bins
 $ hyperfine 'target/release/original < test.log'
